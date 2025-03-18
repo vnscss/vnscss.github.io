@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="inputsContainer">
+        <input type="text" name="" id="titulo" placeholder="Titulo">
+        <input type="text" name="" id="chamada" placeholder="Chamada">
+        <input type="text" name="" id="corpotxt" placeholder="Texto">
+        <button id="addFile" type="button">Add file</button>
+        <button id="subimit" type="button">Salvar</button>
+    </div>
+    <script>
+        let addFileButton = document.getElementById("addFile");
+        let inputsContainer = document.getElementById("inputsContainer");
+        let subimitButton = document.getElementById("subimit");
+
+
+        addFileButton.addEventListener("click",
+        function(){
+            const newInput = document.createElement("input");
+            newInput.type = "file";
+            newInput.accept = "image/*";
+            document.body.insertBefore(newInput, addFileButton);
+        })
+
+        subimitButton.addEventListener("click",
+        function(){
+            let titulo = document.getElementById("titulo").value;
+            let chamada = document.getElementById("chamada").value;
+            let corpotxt = document.getElementById("corpotxt").value;
+
+
+            
+
+        })
+    </script>
+</body>
+</html>
