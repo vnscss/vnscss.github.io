@@ -1,0 +1,28 @@
+usando markdown
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Markdown</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+    <h2>Export Markdown File</h2>
+    <textarea id="markdownContent" rows="6" cols="50">
+# My Markdown File
+This is a **test** file.
+    </textarea>
+    <br>
+    <button onclick="exportMarkdown()">Download Markdown</button>
+
+    <script>
+        function exportMarkdown() {
+            const content = document.getElementById("markdownContent").value;
+            const blob = new Blob([content], { type: "text/markdown;charset=utf-8" });
+            saveAs(blob, "my-file.md");
+        }
+    </script>
+</body>
+</html>
