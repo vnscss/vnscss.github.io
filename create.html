@@ -11,12 +11,15 @@
         <input type="text" name="" id="chamada" placeholder="Chamada">
         <input type="text" name="" id="corpotxt" placeholder="Texto">
         <button id="addFile" type="button">Add file</button>
+        <div id="fileInputsContainer"></div>
         <button id="subimit" type="button">Salvar</button>
     </div>
     <script>
         let addFileButton = document.getElementById("addFile");
         let inputsContainer = document.getElementById("inputsContainer");
         let subimitButton = document.getElementById("subimit");
+        let fileInputsContainer = document.getElementById("fileInputsContainer");
+
 
 
         addFileButton.addEventListener("click",
@@ -24,7 +27,7 @@
             const newInput = document.createElement("input");
             newInput.type = "file";
             newInput.accept = "image/*";
-            document.body.insertBefore(newInput, addFileButton);
+            fileInputsContainer.appendChild(newInput);
         })
 
         subimitButton.addEventListener("click",
@@ -34,7 +37,7 @@
             let corpotxt = document.getElementById("corpotxt").value;
 
 
-            
+
 
         })
     </script>
