@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
     <div id="inputsContainer">
@@ -13,12 +14,16 @@
         <button id="addFile" type="button">Add file</button>
         <div id="fileInputsContainer"></div>
         <button id="subimit" type="button">Salvar</button>
+        <div id="imagesPath" style="display: none;">
+
+        </div>
     </div>
     <script>
         let addFileButton = document.getElementById("addFile");
         let inputsContainer = document.getElementById("inputsContainer");
         let subimitButton = document.getElementById("subimit");
         let fileInputsContainer = document.getElementById("fileInputsContainer");
+        let imagesPath = document.getElementById("imagesPath");
 
 
 
@@ -30,6 +35,21 @@
 
             const newP = document.createElement("p");
             newDiv.appendChild(newP);
+
+            const newDeletButton = document.createElement("button")
+            newDeletButton.innerHTML = "Delete"
+            newDeletButton.onclick = function(){
+                let PathArr = imagesPath.querySelectorAll("p");
+
+                PathArr.forEach(element => {
+                    if(element.id === this.parentElement.querySelector("p").innerText ){
+                        element.remove();
+                    }
+                });
+
+                this.parentElement.remove();
+            }
+            newDiv.appendChild(newDeletButton)
 
             const newInput = document.createElement("input");
             newInput.type = "file";
@@ -46,7 +66,14 @@
                     navigator.clipboard.writeText(copyText);
                 };
                 newDiv.appendChild(newButton);
+
+
+                const newPath = document.createElement("p");
+                newPath.id = `static/${file.name}`
+                imagesPath.appendChild(newPath);
             };
+
+
             newInput.onclick = function(){
             }
             newDiv.appendChild(newInput);
@@ -59,8 +86,25 @@
             let chamada = document.getElementById("chamada").value;
             let corpotxt = document.getElementById("corpotxt").value;
 
+            let HTMLstr = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Document</title>
+            </head>
+            <body>
+                <h1>${titulo}</h1>
+                <p>${chamada}</p>
 
+                <p>${corpotxt}</p>
+            </body>
+            </html>
+            `;
 
+            var blob = new Blob([HTMLstr], { type: "text/html;charset=utf-8" });
+            saveAs(blob, `${titulo}.html`);
 
         })
     </script>
