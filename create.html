@@ -39,7 +39,16 @@
                 if (file) {
                     newP.innerHTML = `static/${file.name}`
                 }
+
+                const newButton = document.createElement("button");
+                newButton.onclick = function(){
+                    const copyText = this.parentElement.querySelector("p").innerText;
+                    navigator.clipboard.writeText(copyText);
+                };
+                newDiv.appendChild(newButton);
             };
+            newInput.onclick = function(){
+            }
             newDiv.appendChild(newInput);
         })
 
