@@ -24,11 +24,25 @@
 
         addFileButton.addEventListener("click",
         function(){
+
+            const newDiv = document.createElement("div");
+            fileInputsContainer.appendChild(newDiv);
+
+            const newP = document.createElement("p");
+            newDiv.appendChild(newP);
+
             const newInput = document.createElement("input");
             newInput.type = "file";
             newInput.accept = "image/*";
-            fileInputsContainer.appendChild(newInput);
+            newInput.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    newP.innerHTML = `static/${file.name}`
+                }
+            };
+            newDiv.appendChild(newInput);
         })
+
 
         subimitButton.addEventListener("click",
         function(){
