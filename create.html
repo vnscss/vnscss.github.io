@@ -11,6 +11,7 @@
         <input type="text" name="" id="titulo" placeholder="Titulo">
         <input type="text" name="" id="chamada" placeholder="Chamada">
         <input type="text" name="" id="corpotxt" placeholder="Texto">
+        <input type="text" name="" id="custonJS" placeholder="custonJS">
         <button id="addFile" type="button">Add file</button>
         <div id="fileInputsContainer"></div>
         <button id="subimit" type="button">Salvar</button>
@@ -85,20 +86,27 @@
             let titulo = document.getElementById("titulo").value;
             let chamada = document.getElementById("chamada").value;
             let corpotxt = document.getElementById("corpotxt").value;
+            let custonJS = document.getElementById("custonJS").value;
 
-            let HTMLstr = `
+            let cdnMarkdown = '<scr' + 'ipt src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></scr' + 'ipt>';
+            let consumeScript = '<scr' + `ipt >document.getElementById('conteudo').innerHTML = marked.parse(\`${corpotxt}\`)</scr` + 'ipt>';
+            let custonJSInner = '<scr' + `ipt> ${custonJS}</scr` + 'ipt>';
+
+            let HTMLstr =`
             <!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Document</title>
+                ${cdnMarkdown}
             </head>
             <body>
                 <h1>${titulo}</h1>
                 <p>${chamada}</p>
-
-                <p>${corpotxt}</p>
+                <p id="conteudo"></p>
+                ${consumeScript}
+                ${custonJSInner}
             </body>
             </html>
             `;
