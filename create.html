@@ -34,11 +34,6 @@
         let removerCustonJsButton = document.getElementById("removerCustonJs");
         let custonJSContainer = document.getElementById("custonJSContainer");
         
-
-
-
-
-
         addFileButton.addEventListener("click",
         function(){
 
@@ -130,9 +125,19 @@
             `;
 
             var blob = new Blob([HTMLstr], { type: "text/html;charset=utf-8" });
-            saveAs(blob, `${titulo}.html`);
+            saveAs(blob, `${slugify(titulo)}.html`);
 
         })
+
+
+        function slugify(text) {
+            return text.toString().toLowerCase()
+              .replace(/\s+/g, '-')           
+              .replace(/[^\w\-]+/g, '')      
+              .replace(/\-\-+/g, '-')         
+              .replace(/^-+/, '')           
+              .replace(/-+$/, '');            
+          }
     </script>
 </body>
 </html>
