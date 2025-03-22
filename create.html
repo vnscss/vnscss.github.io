@@ -10,6 +10,10 @@
     <div id="inputsContainer">
         <input type="text" name="" id="titulo" placeholder="Titulo">
         <input type="text" name="" id="chamada" placeholder="Chamada">
+        <div id="thumbnailContainer">
+            <p>Thumbnail</p>
+            <input type="file" name="Thumbnail" id="thumbnail" accept="image/*">
+        </div>
         <input type="text" name="" id="corpotxt" placeholder="Texto">
         <input type="text" name="" id="custonJS" placeholder="custonJS">
         <button id="addFile" type="button">Add file</button>
@@ -25,6 +29,13 @@
         let subimitButton = document.getElementById("subimit");
         let fileInputsContainer = document.getElementById("fileInputsContainer");
         let imagesPath = document.getElementById("imagesPath");
+        let thumbnailInput = document.getElementById("thumbnail");
+        let thumbnailPath;
+
+        thumbnailInput.addEventListener('change', function(){
+            alert("a")
+            thumbnailPath = `/static/${thumbnailInput.files[0].name}`;
+        });
 
 
 
@@ -58,7 +69,7 @@
             newInput.onchange = function(event) {
                 const file = event.target.files[0];
                 if (file) {
-                    newP.innerHTML = `static/${file.name}`
+                    newP.innerHTML = `/static/${file.name}`
                 }
 
                 const newButton = document.createElement("button");
@@ -71,7 +82,7 @@
 
 
                 const newPath = document.createElement("p");
-                newPath.id = `static/${file.name}`
+                newPath.id = `/static/${file.name}`
                 imagesPath.appendChild(newPath);
             };
 
@@ -89,6 +100,7 @@
             let corpotxt = document.getElementById("corpotxt").value;
             let custonJS = document.getElementById("custonJS").value;
 
+
             let cdnMarkdown = '<scr' + 'ipt src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></scr' + 'ipt>';
             let consumeScript = '<scr' + `ipt >document.getElementById('conteudo').innerHTML = marked.parse(\`${corpotxt}\`)</scr` + 'ipt>';
             let custonJSInner = '<scr' + `ipt> ${custonJS}</scr` + 'ipt>';
@@ -105,6 +117,7 @@
             <body>
                 <h1>${titulo}</h1>
                 <p>${chamada}</p>
+                <img src="${thumbnailPath}" alt="">
                 <p id="conteudo"></p>
                 ${consumeScript}
                 ${custonJSInner}
@@ -116,6 +129,8 @@
             saveAs(blob, `${titulo}.html`);
 
         })
+
+        
     </script>
 </body>
 </html>
