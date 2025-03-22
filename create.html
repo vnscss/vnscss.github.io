@@ -14,9 +14,13 @@
             <p>Thumbnail</p>
             <input type="file" name="Thumbnail" id="thumbnail" accept="image/*">
         </div>
-        <input type="text" name="" id="corpotxt" placeholder="Texto">
-        <input type="text" name="" id="custonJS" placeholder="custonJS">
+        <textarea id="corpotxt" placeholder="Texto"></textarea>
+        <div id="custonJSContainer" style="display: none;">
+            <button id="removerCustonJs">remover</button>
+            <input type="text" name="" id="custonJS" placeholder="custonJS">
+        </div>
         <button id="addFile" type="button">Add file</button>
+        <button id="addCustonJS" type="button"">Add custon JS</button>
         <div id="fileInputsContainer"></div>
         <button id="subimit" type="button">Salvar</button>
 
@@ -36,9 +40,11 @@
             alert("a")
             thumbnailPath = `/static/${thumbnailInput.files[0].name}`;
         });
-
-
-
+        let addCustonJSButton = document.getElementById("addCustonJS");
+        let custonJSinput = document.getElementById("custonJS");
+        let removerCustonJsButton = document.getElementById("removerCustonJs");
+        let custonJSContainer = document.getElementById("custonJSContainer");
+        
         addFileButton.addEventListener("click",
         function(){
 
@@ -92,6 +98,13 @@
             newDiv.appendChild(newInput);
         })
 
+        addCustonJSButton.addEventListener("click", function(){
+            custonJSContainer.style.display = "block";
+        });
+
+        removerCustonJsButton.addEventListener("click", function(){
+            custonJSContainer.style.display = "none";
+        });
 
         subimitButton.addEventListener("click",
         function(){
@@ -102,7 +115,7 @@
 
 
             let cdnMarkdown = '<scr' + 'ipt src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></scr' + 'ipt>';
-            let consumeScript = '<scr' + `ipt >document.getElementById('conteudo').innerHTML = marked.parse(\`${corpotxt}\`)</scr` + 'ipt>';
+            let markdownScript = '<scr' + `ipt >document.getElementById('conteudo').innerHTML = marked.parse(\`${corpotxt}\`)</scr` + 'ipt>';
             let custonJSInner = '<scr' + `ipt> ${custonJS}</scr` + 'ipt>';
 
             let HTMLstr =`
@@ -119,16 +132,26 @@
                 <p>${chamada}</p>
                 <img src="${thumbnailPath}" alt="">
                 <p id="conteudo"></p>
-                ${consumeScript}
+                ${markdownScript}
                 ${custonJSInner}
             </body>
             </html>
             `;
 
             var blob = new Blob([HTMLstr], { type: "text/html;charset=utf-8" });
-            saveAs(blob, `${titulo}.html`);
+            saveAs(blob, `${slugify(titulo)}.html`);
 
         })
+
+
+        function slugify(text) {
+            return text.toString().toLowerCase()
+              .replace(/\s+/g, '-')           
+              .replace(/[^\w\-]+/g, '')      
+              .replace(/\-\-+/g, '-')         
+              .replace(/^-+/, '')           
+              .replace(/-+$/, '');            
+          }
 
         
     </script>
