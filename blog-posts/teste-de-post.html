@@ -8,15 +8,15 @@
                 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
             </head>
             <body>
-                <h1>Teste de blog</h1>
-                <p>este é um teste, confira!</p>
+                <h1>teste de post</h1>
+                <p>esta é uma chamada</p>
                 <img src="/static/github.cbf59307aacb9da9817a070921c00d35b35addc8.png" alt="">
-                <p id="conteudo"></p>
-                <script >document.getElementById('conteudo').innerHTML = marked.parse(`### este é um teste da ferramenta 
+                <p id="conteudo">### este é um teste da ferramenta 
 testando se as `url`, `/static/` estão funcionando.
 ![imagem](/static/features-river-2.webp)
 
-`)</script>
+</p>
+                <script >document.getElementById('conteudo').innerHTML = marked.parse(document.getElementById('conteudo').innerHTML)</script>
                 <script> </script>
             </body>
             </html>
