@@ -15,8 +15,8 @@
         <button id="addFile" type="button">Add file</button>
         <div id="fileInputsContainer"></div>
         <button id="subimit" type="button">Salvar</button>
-        <div id="imagesPath" style="display: none;">
 
+        <div id="imagesPath" style="display: none;">
         </div>
     </div>
     <script>
@@ -62,6 +62,7 @@
                 }
 
                 const newButton = document.createElement("button");
+                newButton.innerHTML = "copy path"
                 newButton.onclick = function(){
                     const copyText = this.parentElement.querySelector("p").innerText;
                     navigator.clipboard.writeText(copyText);
