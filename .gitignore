@@ -18,3 +18,4 @@
 /templates/nbproject/private/
 config
 /.metadata/
+db.sqlite3
