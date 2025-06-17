@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from markdownx.models import MarkdownxField
+
 
 class Article(models.Model):
     autor = models.ForeignKey(User, on_delete=models.PROTECT)
@@ -12,7 +14,7 @@ class Article(models.Model):
     slug = models.SlugField(max_length=220, unique=True, blank=True)
 
     banner = models.ImageField(upload_to='banners/', blank=True, null=True)
-    corpo_texto = models.TextField()
+    texto = MarkdownxField()
 
     views = models.PositiveIntegerField(default=0)
 
