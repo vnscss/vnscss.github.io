@@ -15,6 +15,8 @@ class Article(models.Model):
     titulo = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, blank=True) 
 
+    chamada = models.TextField(blank=True)
+
     banner = models.ImageField(upload_to='banners/', blank=True, null=True)
     texto = MarkdownxField()
 
