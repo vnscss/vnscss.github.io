@@ -1,3 +1,122 @@
 <style>
 
+:root{
+    --cinza: rgba(70, 70, 70, 0.219);
+}
+
+*{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+header{
+    background-color: rebeccapurple;
+
+    width: 100vw;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20%;
+}
+
+.headerTitle{
+    font-weight: bold;
+}
+
+.redes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30%;
+}
+
+.redes a img{
+    width: 30px;
+    border-radius: 30%;
+}
+
+.search{
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+
+}
+
+.search input{
+    width: 85%  ;
+     text-align: center;
+} 
+
+.search input , .search input:focus{
+background-color: white;
+height: 50px;
+border-radius: 50px;
+border: none;
+outline: none;
+}
+
+.search button {
+    background: none;
+    border: none;
+    width: 30px ;
+    cursor: pointer;
+    
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    width: 100vw;
+
+    padding-top: 5vh;
+
+}
+
+.articlesContainer{
+    width: 80%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: row;
+
+    height: 25vh;
+
+    padding-bottom: 1.5vh;
+    padding-top: 1.5vh;
+
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+
+.articlesContainer img{
+    height: 100%;
+    object-fit: contain;
+}
+
+.lineBr{
+    background-color: var(--cinza);
+    width: 70vw;
+     height: 1px;
+}
 </style>

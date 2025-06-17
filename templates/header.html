@@ -1,13 +1,13 @@
 <header>
-    <h1>vns blog</h1>
+    <h1 class="headerTitle">vns blog</h1>
 
     <div class="search">
         <input type="text">
-        <button class="searchButton"></button>
+        <button class="searchButton"><span class="material-symbols-outlined">search</span></button>
     </div>
-
+{% load static %}
     <div class="redes">
-        <a href="https://github.com/vnscss/" class="github"></a>
-        <a href="https://www.linkedin.com/in/vin%C3%ADcius-pires-4840b52a1/" class="linkedin"></a>
+        <a href="https://github.com/vnscss/" class="github"> <img src="{% static 'assets/github.png' %}" alt=""></a>
+        <a href="https://www.linkedin.com/in/vin%C3%ADcius-pires-4840b52a1/" class="linkedin"> <img src="{% static 'assets/linkedin.png' %}" alt=""> </a>
     </div>
 </header>

@@ -3,14 +3,25 @@
 {% block titulo %}
     vns-blog
 {% endblock %}
-
+{% load static%}
 {% block conteudo %}
-
+<main>
 {% for article in articles %}
+<div class="articlesContainer">
+    {% if article.banner %}
+        <img class="col-6" src="media/{{ article.banner }}" alt="">
+    {% else %}
+         <img  class="col-6" src="{% static 'assets/notFound.png' %}" alt="">
+    {% endif %}
+    
+    <h1 class="col-6">
+        {{ article.titulo }}
+    </h1>
+</div>
 
-{{ article.titulo }}
-<br>
+<div class="lineBr"></div>
 {% endfor %}
 
 <a href="{% url 'ArticleListView' %}">Ler mais </a>
+</main>
 {% endblock %}
