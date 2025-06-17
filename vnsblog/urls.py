@@ -18,16 +18,17 @@ from django.contrib import admin
 from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
-
-from article.views import get_article
+from article.views import *
 
 urlpatterns = [
+    path('' , mainPage , name='mainPage'),
     path('admin/', admin.site.urls),
     path('markdownx/', include('markdownx.urls')),
 ] 
 
 article = [
     path('article/<slug:slug>', get_article , name='get_article'),
+    path('my-articles/' , ArticletListView.as_view() , name='ArticleListView' )
 ]
 
 urlpatterns += article
