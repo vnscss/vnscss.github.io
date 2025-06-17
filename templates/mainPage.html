@@ -1,7 +1,16 @@
-<h1>cu de bode</h1>
+{% extends 'base.html' %}
+
+{% block titulo %}
+    vns-blog
+{% endblock %}
+
+{% block conteudo %}
 
 {% for article in articles %}
 
 {{ article.titulo }}
 <br>
 {% endfor %}
+
+<a href="{% url 'ArticleListView' %}">Ler mais </a>
+{% endblock %}
