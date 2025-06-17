@@ -19,3 +19,4 @@
 config
 /.metadata/
 db.sqlite3
+virtual-blog
