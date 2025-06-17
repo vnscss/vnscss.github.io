@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Artigo
+{% endblock %}
+
+{% block innerhead %}
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            let FILE = "https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@main/github-markdown-dark.css"
+            var css = document.createElement('link');
+            css.setAttribute('rel','stylesheet');
+            css.setAttribute('type', 'text/css');
+            css.setAttribute('href', FILE);
+
+            document.getElementsByTagName('head')[0].appendChild(css);
+        }
+        else{
+            let FILE = "https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@main/github-markdown-light.css"
+            var css = document.createElement('link');
+            css.setAttribute('rel','stylesheet');
+            css.setAttribute('type', 'text/css');
+            css.setAttribute('href', FILE);
+
+            document.getElementsByTagName('head')[0].appendChild(css);
+        }
+    </script>
+{% endblock %}
+
+{% block conteudo %}
+    {{ article.titulo }}
+
+    {{ article.autor }}
+    {% load markdownify %}
+    <div class="markdown-body">
+        {{ article.texto |  markdownify}}
+    </div>
+{% endblock %}
