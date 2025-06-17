@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'article',
-    'markdownx'
+    'markdownx',
+    'markdownify'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +127,44 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = '/home/conteudo'
 MEDIA_URL = '/media/'
+
+MARKDOWNIFY = {
+   "default": {
+      "WHITELIST_TAGS": [
+            "a",
+            "abbr",
+            "b", "strong",
+            "blockquote",
+            "code", "pre",
+            "details",
+            "dfn",
+            "em",
+            "figcaption",
+            "figure",
+            "h1", "h2", "h3", "h4", "h5", "h6",
+            "hr",
+            "img",
+            "input",
+            "kbd",
+            "mark",
+            "ol", "ul",
+            "li",
+            "p",
+            "s",
+            "small",
+            "sub", "sup",
+            "table",
+            "tbody", "thead", "tfoot",
+            "td", "th",
+            "tr",
+            "summary",
+            "strong",
+            "time",
+            "div",
+            "span",
+            "mark",
+            "cite",
+            "data"
+    ]
+   },
+}
