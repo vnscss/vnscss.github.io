@@ -3,6 +3,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 from django.utils.text import slugify
+from markdownx.utils import markdownify
 
 
 class Article(models.Model):
@@ -31,6 +32,10 @@ class Article(models.Model):
             self.slug = slug
 
         super().save(*args, **kwargs)
+    
+    @property
+    def texto_html_parse(self):
+        return markdownify(self.texto)
 
     def __str__(self):
         return self.titulo
