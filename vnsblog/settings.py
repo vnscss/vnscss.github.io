@@ -168,3 +168,5 @@ MARKDOWNIFY = {
     ]
    },
 }
+
+LOGIN_REDIRECT_URL = '/'
