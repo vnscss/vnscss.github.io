@@ -19,11 +19,18 @@ from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from article.views import get_article
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('markdownx/', include('markdownx.urls')),
 ] 
 
+article = [
+    path('article/<slug:slug>', get_article , name='get_article'),
+]
+
+urlpatterns += article
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
