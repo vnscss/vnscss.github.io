@@ -18,12 +18,16 @@ from django.contrib import admin
 from django.urls import path , include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required
+from markdownx.views import ImageUploadView, MarkdownifyView
 from article.views import *
 
 urlpatterns = [
     path('' , mainPage , name='mainPage'),
     path('admin/', admin.site.urls),
-    path('markdownx/', include('markdownx.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path("markdownx/upload/", login_required(ImageUploadView.as_view()), name="markdownx_upload"),
+    path("markdownx/markdownify/", login_required(MarkdownifyView.as_view()), name="markdownx_markdownify"),
 ] 
 
 article = [
