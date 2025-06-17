@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
+from django.utils.text import slugify
 
 
 class Article(models.Model):
@@ -11,7 +12,7 @@ class Article(models.Model):
     data_edicao = models.DateTimeField(auto_now=True)
 
     titulo = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=220, unique=True, blank=True)
+    slug = models.SlugField(unique=True, blank=True) 
 
     banner = models.ImageField(upload_to='banners/', blank=True, null=True)
     texto = MarkdownxField()
@@ -22,11 +23,13 @@ class Article(models.Model):
         if not self.slug:
             base_slug = slugify(self.titulo)
             slug = base_slug
-            count = 1
+            counter = 1
+            # Ensure uniqueness
             while Article.objects.filter(slug=slug).exists():
-                slug = f"{base_slug}-{count}"
-                count += 1
+                slug = f"{base_slug}-{counter}"
+                counter += 1
             self.slug = slug
+
         super().save(*args, **kwargs)
 
     def __str__(self):
