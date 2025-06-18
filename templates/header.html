@@ -11,3 +11,25 @@
         <a href="https://www.linkedin.com/in/vin%C3%ADcius-pires-4840b52a1/" class="linkedin"> <img src="{% static 'assets/linkedin.png' %}" alt=""> </a>
     </div>
 </header>
+
+
+<script>
+    let searchButton = document.querySelector('.searchButton');
+    let searchInput = document.querySelector('.search input');
+
+    searchButton.addEventListener('click', function() {
+        let query = searchInput.value.trim();
+        if (query) {
+            window.location.href = `/my-articles/?search=${encodeURIComponent(query)}`;
+        }
+    });
+
+    window.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            let query = searchInput.value.trim();
+            if (query) {
+                window.location.href = `/my-articles/?search=${encodeURIComponent(query)}`;
+            }
+        }
+    });
+</script>

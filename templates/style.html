@@ -2,6 +2,7 @@
 
 :root{
     --cinza: rgba(70, 70, 70, 0.219);
+    --shadow: rgba(0, 0, 0, 0.178);
 }
 
 *{
@@ -22,7 +23,8 @@ body{
 }
 
 header{
-    background-color: rebeccapurple;
+
+    border-bottom: 2px dashed var(--cinza);
 
     width: 100vw;
     height: 10vh;
@@ -58,6 +60,14 @@ header{
     justify-content: center;
     flex-direction: row;
 
+    background-color: white;
+    height: 50px;
+
+
+    box-shadow: 0px 0px 10px 2px var(--shadow);
+    -webkit-box-shadow: 0px 0px 10px 2px var(--shadow);
+    -moz-box-shadow: 0px 0px 10px 2px var(--shadow);
+    border-radius: 50px;
 }
 
 .search input{
@@ -68,9 +78,10 @@ header{
 .search input , .search input:focus{
 background-color: white;
 height: 50px;
-border-radius: 50px;
+border-radius: 50px 0px 0px 50px;
 border: none;
 outline: none;
+
 }
 
 .search button {
