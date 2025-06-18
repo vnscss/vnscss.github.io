@@ -20,6 +20,12 @@
 body{
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 header{
@@ -95,13 +101,24 @@ outline: none;
 main{
     display: flex;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
+
+    height: 85vh;
 
     width: 100vw;
 
     padding-top: 5vh;
 
+    overflow: scroll;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .articlesContainer{
@@ -123,10 +140,33 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    gap: 7%;
+
+
+  opacity: 0; /* estado inicial */
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.articlesContainer:nth-child(1) { animation-delay: 0s; }
+.articlesContainer:nth-child(3) { animation-delay: 0.3s; }
+.articlesContainer:nth-child(5) { animation-delay: 0.6s; }
+.articlesContainer:nth-child(7) { animation-delay: 0.9s; }
+.articlesContainer:nth-child(9) { animation-delay: 1.2s; }
+
+.articlesContainer div{
+    width: 65%;
+    height: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);        
 }
 
 .articlesContainer h1{
     cursor: pointer;
+}
+
+.articlesContainer p{
+    max-height: 50%;
 }
 
 .articlesContainer img{
@@ -137,9 +177,21 @@ main{
 
 }
 
+
 .lineBr{
     background-color: var(--cinza);
     width: 70vw;
-     height: 1px;
+    min-height: 1px;
+    height: 1px !important;
+
+
+  opacity: 0; /* estado inicial */
+  animation: fadeIn 1s ease-in forwards;
 }
+
+.lineBr:nth-child(2) { animation-delay: 0s; }
+.lineBr:nth-child(4) { animation-delay: 0.3s; }
+.lineBr:nth-child(6) { animation-delay: 0.6s; }
+.lineBr:nth-child(8) { animation-delay: 0.9s; }
+.lineBr:nth-child(10) { animation-delay: 1.2s; }
 </style>
