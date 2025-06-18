@@ -65,10 +65,25 @@
 
                         {% load markdownify %}
                         <div class="markdown-body" style="background-color: #0000;">
-                            {{ article.texto |  markdownify | safe }}
+                            {{ article.texto_html_parse | safe }}
                         </div>
                 
             </div>
     </div>
 </main>
+
+
+<script>
+
+    let markdownbody = document.querySelectorAll('.markdown-body *');
+    markdownbody.forEach((element) => {
+        if (element.tagName === 'IMG') {
+            let height = element.naturalHeight;
+            element. style.width = '100%';
+            element.style.height = height   + 'px';
+            element.style.objectFit = 'contain';
+        }
+    });
+
+</script>
 {% endblock %}
