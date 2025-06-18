@@ -5,7 +5,9 @@
 {% endblock %}
 {% load static%}
 {% block conteudo %}
-<main>
+<main id="scroll-area">
+<div style="display: flex; align-items: center; justify-content: center; flex-direction: column; width: 100vw; padding-top: 5vh;">
+
 {% for article in articles %}
 <div class="articlesContainer">
     {% if article.banner %}
@@ -26,7 +28,9 @@
 
 <div class="lineBr"></div>
 {% endfor %}
-
+</div>
 </main>
-<a href="{% url 'ArticleListView' %}">Ler mais </a>
+<footer>
+    <a href="{% url 'ArticleListView' %}">Ler mais </a>
+</footer>
 {% endblock %}

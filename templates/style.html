@@ -99,9 +99,23 @@ outline: none;
 }
 
 main{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
+
+    height: 85vh;
+
+    width: 100vw;
+
+    padding-top: 5vh;
+
+    overflow: scroll;
+}
+
+main {
+    display: flex !important;
+    align-items: center !important;
+    flex-direction: column !important;
 
     height: 85vh;
 
@@ -194,4 +208,60 @@ main{
 .lineBr:nth-child(6) { animation-delay: 0.6s; }
 .lineBr:nth-child(8) { animation-delay: 0.9s; }
 .lineBr:nth-child(10) { animation-delay: 1.2s; }
+
+footer{
+    width: 100vw;
+    border-top: 2px dashed var(--cinza);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+      --cinza: rgba(255, 255, 255, 0.15);
+      --shadow: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+      background-color: #121212;
+      color: #f0f0f0;
+  }
+
+  .redes .github{
+    filter: invert(1);
+  }
+  .search {
+      background-color: #1e1e1e;
+  }
+
+  .searchButton * {
+      color: #f0f0f0;
+  }
+
+  .search input,
+  .search input:focus {
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+  }
+
+  .articlesContainer h1 {
+      color: #ffffff;
+  }
+
+  .articlesContainer p {
+      color: #cccccc;
+  }
+
+  .search button img,
+  .redes a img,
+  .articlesContainer img {
+      filter: brightness(0.9);
+  }
+
+  .lineBr {
+      background-color: var(--cinza);
+  }
+}
+
 </style>
