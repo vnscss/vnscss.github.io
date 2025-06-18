@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Artigo
+{{ article.titulo }}
 {% endblock %}
 
 {% block innerhead %}
@@ -28,11 +28,47 @@ Artigo
 {% endblock %}
 
 {% block conteudo %}
-    {{ article.titulo }}
+<main id="scroll-area">
+    <div class="articleInnerMainContainer">
+            <div class="singleArticleContainer">
+                            <div>
 
-    {{ article.autor }}
-    {% load markdownify %}
-    <div class="markdown-body">
-        {{ article.texto |  markdownify}}
+                                <h1 class="articleTitle">
+                                    {{ article.titulo }}
+                                </h1>
+                                <p class="articleChamada">
+                                    {{ article.chamada }}
+                                </p>
+
+                                <p class="articleData">
+                                    <small>Publicado em: {{ article.data_publicacao  }}</small>
+                                </p>
+
+                                <div class="articleAuthor"> 
+                                    <img src="https://github.com/vnscss.png" alt="">
+                                    <a href="https://github.com/vnscss">Vinícius Pires</a>
+                                </div>
+                            </div>
+
+
+                        <div class="lineBr"></div>
+
+                        <div class="imgContainer">
+                            {% load static %}
+                            {% if article.banner %}
+                                <img src="/media/{{ article.banner }}" alt="">
+                            {% else %}
+                                <img src="{% static 'assets/notFound.png' %}" alt="">
+                            {% endif %}
+                            
+                        </div>
+
+                        {% load markdownify %}
+                        <div class="markdown-body" style="background-color: #0000;">
+                            {{ article.texto |  markdownify | safe }}
+                        </div>
+                
+            </div>
     </div>
+</main>
 {% endblock %}
