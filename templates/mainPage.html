@@ -11,7 +11,7 @@
 {% for article in articles %}
 <div class="articlesContainer">
     {% if article.banner %}
-        <img onclick="location.href='/article/{{ article.slug }}'" src="media/{{ article.banner }}" alt="">
+        <img onclick="location.href='/article/{{ article.slug }}'" src="/media/{{ article.banner }}" alt="">
     {% else %}
          <img  onclick="location.href='/article/{{ article.slug }}'" src="{% static 'assets/notFound.png' %}" alt="">
     {% endif %}

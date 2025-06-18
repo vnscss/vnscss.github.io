@@ -16,7 +16,7 @@ def mainPage(request):
     return render(request, 'mainPage.html', {'articles': articles})
 
 class ArticletListView(ListView):
-    paginate_by = 2
+    paginate_by = 10
     model = Article
 
     def get_queryset(self):

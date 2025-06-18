@@ -1,23 +1,58 @@
-{% for contact in page_obj %}
-    {# Each "contact" is a Contact model object. #}
-    {{ contact.titulo |upper }}<br>
 
-{% endfor %}
+{% extends 'base.html' %}
 
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; first</a>
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+{% block titulo %}
+    vns-blog
+{% endblock %}
+{% load static%}
+{% block conteudo %}
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-        {% endif %}
-    </span>
+<main id="scroll-area">
+<div style="display: flex; align-items: center; justify-content: center; flex-direction: column; width: 100vw; padding-top: 5vh;">
+
+{% for article in page_obj %}
+<div class="articlesContainer">
+    {% if article.banner %}
+        <img onclick="location.href='/article/{{ article.slug }}'" src="/media/{{ article.banner }}" alt="">
+    {% else %}
+         <img  onclick="location.href='/article/{{ article.slug }}'" src="{% static 'assets/notFound.png' %}" alt="">
+    {% endif %}
+    
+    <div>
+        <h1 onclick="location.href='/article/{{ article.slug }}'">
+            {{ article.titulo }}
+        </h1>
+        <p onclick="location.href='/article/{{ article.slug }}'">
+            {{ article.chamada }}
+        </p>
+    </div>
 </div>
+
+<div class="lineBr"></div>
+{% endfor %}
+</div>
+</main>
+<footer>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1&search={{ request.GET.search }}">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}&search={{ request.GET.search }}">previous</a>
+            {% endif %}
+            
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+            
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}&search={{ request.GET.search }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}&search={{ request.GET.search }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+</footer>
+
+{% endblock %}
