@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-    vns-blog
+    vns.dev.br
 {% endblock %}
 {% load static%}
 {% block conteudo %}
 <main id="scroll-area">
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; width: 100vw; padding-top: 5vh;">
+
+<h1 style="padding-bottom: 4%;">Artigos mais recentes ↓</h1>
 
 {% for article in articles %}
 <div class="articlesContainer">
