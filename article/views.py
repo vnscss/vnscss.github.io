@@ -3,6 +3,8 @@ from .models import Article
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView
 from django.db.models import Q
+from django.conf import settings
+from django.shortcuts import redirect
 
 
 def get_article(request, slug):
@@ -28,3 +30,7 @@ class ArticletListView(ListView):
                 Q(texto__icontains=query)
             )
         return super().get_queryset()
+
+
+def error_404(request, exception):
+    return render(request, '404.html')

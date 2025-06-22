@@ -35,6 +35,9 @@ article = [
     path('my-articles/' , ArticletListView.as_view() , name='ArticleListView' )
 ]
 
+
+handler404 = 'article.views.error_404'
+
 urlpatterns += article
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

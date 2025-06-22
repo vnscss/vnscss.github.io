@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    vns.dev.br 
+{% endblock %}
+{% load static%}
+{% block conteudo %}
+
+    <main style="justify-content: center;">
+        <h1 style="font-size: 50px;">404</h1>
+        <code style="font-size: 30px;">(╯°□°）╯︵ ┻━┻</code>
+
+        <p style="padding-top: 5vh;" class="contador"></p>
+    </main>
+    
+    <script>
+        let contador = document.querySelector(".contador");
+        let segundos = 10
+
+        contador.innerHTML = `Redirecionando para main page em ${segundos} segundos`
+
+        setInterval(() => {
+            if(segundos <= 0 ){
+                window.location.href = '/'
+            }
+            else{
+                contador.innerHTML = `Redirecionando para main page em ${segundos} segundos`
+                segundos -- 
+            }
+        }, 1000);
+
+    </script>
+{% endblock %}
