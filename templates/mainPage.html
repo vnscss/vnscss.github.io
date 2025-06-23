@@ -4,6 +4,35 @@
     vns.dev.br
 {% endblock %}
 {% load static%}
+
+
+{% block innerhead %}
+
+    <meta name="keywords" content="
+full-stack development, full stack developer, web development career, backend development, frontend development, software development, junior developer, software engineering, coding career, IT jobs, tech industry, programming roadmap, learn to code, self-taught developer, software engineering career, developer portfolio, coding bootcamp, web technologies, open source contributions, agile development, APIs, cloud computing, GitHub, DevOps, RESTful APIs, React, Node.js, Django, JavaScript, HTML, CSS, Python, SQL, version control, CI/CD, IT infrastructure, software architecture, database design, MVC, computer science fundamentals,
+
+desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor backend, desenvolvedor frontend, programador iniciante, engenharia de software, carreira em programação, aprender a programar, tecnologia da informação, mercado de TI, roadmap do programador, desenvolvedor júnior, portfólio de programador, curso de programação, bootcamp de código, tecnologias web, computação em nuvem, APIs REST, DevOps, controle de versão, Git, GitHub, Python, JavaScript, React, Node, Django, banco de dados, arquitetura de software, boas práticas de programação, entrevista de emprego TI, carreira de TI
+" />
+    <meta name="author" content="Vinícius Pires">
+
+
+    <meta property="og:title" content="vns.dev.br" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}" />
+    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/static/assets/vns.jpg" />
+    <meta property="og:site_name" content="vns.dev.br" />
+
+
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+
+
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}" />
+
+{% endblock %}
+
 {% block conteudo %}
 <main id="scroll-area">
 <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; width: 100vw; padding-top: 5vh;">
