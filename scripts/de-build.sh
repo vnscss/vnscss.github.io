@@ -9,6 +9,7 @@ rm -rf ./index.html
 rm -rf ./static
 rm -rf ./media
 rm -rf ./article
+rm -rf ./.github/404.html
 
 
 
