@@ -34,6 +34,10 @@ class ArticletListView(ListView):
         return super().get_queryset()
 
 
+def manual_error_404(request):
+    return render(request, '404.html')
+
+
 def error_404(request, exception):
     return render(request, '404.html')
 

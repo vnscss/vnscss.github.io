@@ -37,6 +37,7 @@ article = [
 
 api = [
     path('api/articles/', get_all_articles, name='get_all_articles'),
+    path('api/404/', manual_error_404, name='error_404'),
 ]
 
 
