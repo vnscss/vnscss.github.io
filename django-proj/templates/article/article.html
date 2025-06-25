@@ -41,8 +41,8 @@ desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor bac
     <meta property="og:title" content="{{article.titulo}}" />
     <meta property="og:description" content="{{article.chamada}}" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}/article/{{article.slug}}" />
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/media/{% if article.banner %}{{article.banner}}{% else %}{% static 'assets/notFound.png' %}{% endif %}" />
+    <meta property="og:url" content="/article/{{article.slug}}" />
+    <meta property="og:image" content="/media/{% if article.banner %}{{article.banner}}{% else %}{% static 'assets/notFound.png' %}{% endif %}" />
     <meta property="og:site_name" content="vns.dev.br" />
 
     <meta property="article:author" content="Vinícius Pires" />
@@ -55,14 +55,14 @@ desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor bac
     <meta name="rating" content="general">
 
 
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}/article/{{ article.slug }}" />
+    <link rel="canonical" href="/article/{{ article.slug }}.html" />
 
     <script type="application/ld+json">
     {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "{{ article.titulo }}",
-    "image": "{{ request.scheme }}://{{ request.get_host }}/media/{% if article.banner %}{{article.banner}}{% else %}{% static 'assets/notFound.png' %}{% endif %}",
+    "image": "/media/{% if article.banner %}{{article.banner}}{% else %}{% static 'assets/notFound.png' %}{% endif %}",
     "author": {
         "@type": "Person",
         "name": "Vinícius Pires"
@@ -72,7 +72,7 @@ desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor bac
         "name": "vns.dev.br",
         "logo": {
         "@type": "ImageObject",
-        "url": "{{ request.scheme }}://{{ request.get_host }}/static/assets/vns.jpg"
+        "url": "/static/assets/vns.jpg"
         }
     },
     "datePublished": "{{ article.data_publicacao }}",

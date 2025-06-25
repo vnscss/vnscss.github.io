@@ -31,14 +31,18 @@ urlpatterns = [
 ] 
 
 article = [
-    path('article/<slug:slug>', get_article , name='get_article'),
+    path('article/<str:slug>', get_article , name='get_article'),
     path('my-articles/' , ArticletListView.as_view() , name='ArticleListView' )
+]
+
+api = [
+    path('api/articles/', get_all_articles, name='get_all_articles'),
 ]
 
 
 handler404 = 'article.views.error_404'
 
-urlpatterns += article
+urlpatterns += article + api
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

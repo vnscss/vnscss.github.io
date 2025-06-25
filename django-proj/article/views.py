@@ -5,9 +5,11 @@ from django.views.generic import ListView
 from django.db.models import Q
 from django.conf import settings
 from django.shortcuts import redirect
+from django.http import HttpResponse
 
 
 def get_article(request, slug):
+    slug = slug.replace('.html', '')
     article = get_object_or_404(Article, slug=slug)
     article.views += 1
     article.save()
@@ -34,3 +36,9 @@ class ArticletListView(ListView):
 
 def error_404(request, exception):
     return render(request, '404.html')
+
+
+def get_all_articles(request):
+    slugs = Article.objects.values_list('slug', flat=True)
+    response = "\n".join(f"{slug}.html" for slug in slugs)
+    return HttpResponse(response, content_type="text/plain")

@@ -18,8 +18,8 @@ desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor bac
 
     <meta property="og:title" content="vns.dev.br" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}" />
-    <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}/static/assets/vns.jpg" />
+    <meta property="og:url" content="/" />
+    <meta property="og:image" content="/static/assets/vns.jpg" />
     <meta property="og:site_name" content="vns.dev.br" />
 
 
@@ -29,7 +29,7 @@ desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor bac
     <meta name="rating" content="general">
 
 
-    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}" />
+    <link rel="canonical" href="/" />
 
 {% endblock %}
 
@@ -42,16 +42,16 @@ desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor bac
 {% for article in articles %}
 <div class="articlesContainer">
     {% if article.banner %}
-        <img onclick="location.href='/article/{{ article.slug }}'" src="/media/{{ article.banner }}" alt="">
+        <img onclick="location.href='/article/{{ article.slug }}.html'" src="/media/{{ article.banner }}" alt="">
     {% else %}
-         <img  onclick="location.href='/article/{{ article.slug }}'" src="{% static 'assets/notFound.png' %}" alt="">
+         <img  onclick="location.href='/article/{{ article.slug }}.html'" src="{% static 'assets/notFound.png' %}" alt="">
     {% endif %}
     
     <div>
-        <h1 onclick="location.href='/article/{{ article.slug }}'">
+        <h1 onclick="location.href='/article/{{ article.slug }}.html'">
             {{ article.titulo }}
         </h1>
-        <p onclick="location.href='/article/{{ article.slug }}'">
+        <p onclick="location.href='/article/{{ article.slug }}.html'">
             {{ article.chamada }}
         </p>
     </div>

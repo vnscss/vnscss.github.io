@@ -14,16 +14,16 @@
 {% for article in page_obj %}
 <div class="articlesContainer">
     {% if article.banner %}
-        <img onclick="location.href='/article/{{ article.slug }}'" src="/media/{{ article.banner }}" alt="">
+        <img onclick="location.href='/article/{{ article.slug }}.html'" src="/media/{{ article.banner }}" alt="">
     {% else %}
-         <img  onclick="location.href='/article/{{ article.slug }}'" src="{% static 'assets/notFound.png' %}" alt="">
+         <img  onclick="location.href='/article/{{ article.slug }}.html'" src="{% static 'assets/notFound.png' %}" alt="">
     {% endif %}
     
     <div>
-        <h1 onclick="location.href='/article/{{ article.slug }}'">
+        <h1 onclick="location.href='/article/{{ article.slug }}.html'">
             {{ article.titulo }}
         </h1>
-        <p onclick="location.href='/article/{{ article.slug }}'">
+        <p onclick="location.href='/article/{{ article.slug }}.html'">
             {{ article.chamada }}
         </p>
     </div>
