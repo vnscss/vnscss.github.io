@@ -9,7 +9,6 @@ rm -rf ./index.html
 rm -rf ./static
 rm -rf ./media
 rm -rf ./article
-rm -rf ./404.html
 
 
 

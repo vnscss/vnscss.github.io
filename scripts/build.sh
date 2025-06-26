@@ -13,9 +13,6 @@ rm -rf ./index.html
 endpoint="http://localhost:9000"
 wget "$endpoint"
 
-rm -rf ./404.html
-wget "$endpoint/api/404/" -O .//404.html
-
 rm -rf ./static
 cp -a ./django-proj/static ./static
 
