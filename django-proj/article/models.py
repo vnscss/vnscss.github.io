@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from markdownx.models import MarkdownxField
 from django.utils.text import slugify
 from markdownx.utils import markdownify
+import markdown
 
 
 class Article(models.Model):
@@ -37,7 +38,7 @@ class Article(models.Model):
     
     @property
     def texto_html_parse(self):
-        return markdownify(self.texto)
+        return markdown.markdown(self.texto, extensions=['fenced_code', 'codehilite'])
 
     def __str__(self):
         return self.titulo
