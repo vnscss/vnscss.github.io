@@ -490,13 +490,11 @@ footer{
     
 
     <main style="justify-content: center;">
-        <h1 style="font-size: 50px;">404</h1>
-        <code style="font-size: 30px;">(╯°□°）╯︵ ┻━┻</code>
 
-        <p style="padding-top: 5vh;" class="contador"></p>
     </main>
     
     <script>
+      function redirect(){
         let contador = document.querySelector(".contador");
         let segundos = 10
 
@@ -511,40 +509,95 @@ footer{
                 segundos -- 
             }
         }, 1000);
-
+    }
     </script>
 
+  <script>
+    let parsedUrl = new URL(window.location.href);
 
-	<script>
-		var { 
-				OverlayScrollbars, 
-				ScrollbarsHidingPlugin, 
-				SizeObserverPlugin, 
-				ClickScrollPlugin  
-			} = OverlayScrollbarsGlobal;
-		const osInstance = OverlayScrollbars(document.getElementById('scroll-area'), {			
-				paddingAbsolute: false,
-				showNativeOverlaidScrollbars: false,
-				update: {
-					elementEvents: [['img', 'load']],
-					debounce: [0, 33],
-					attributes: null,
-					ignoreMutation: null,
-				},
-				overflow: {
-					x: 'scroll',
-					y: 'scroll',
-				},
-				scrollbars: {
-					theme: 'os-theme-dark',
-					visibility: 'auto',
-					autoHide: 'scroll',
-					autoHideDelay: 1300,
-					autoHideSuspend: false,
-					dragScroll: true,
-					clickScroll: false,
-					pointers: ['mouse', 'touch', 'pen'],
-				},});
-	</script>
+    let rotas = {
+      "my-articles": "my-articles/",
+    }
+
+
+    for (const [key, value] of Object.entries(rotas)) {
+
+          if (parsedUrl.pathname.startsWith(value)) {
+            view(key) // Executa a função associada à rota
+            return
+          }
+    }
+
+
+    function view(view) {
+      switch (view) {
+        case 'my-articles':
+          parsedUrl.searchParams.get('search') ? alert("vc pesquisou"): alert("not found")
+
+          fetch(`https://api.github.com/repos/vnscss/vnscss.github.io/contents/article`)
+            .then(response => response.json())
+            .then(data => {
+                for (const [key, value] of Object.entries(data)) {
+                  console.log(value.path)
+                }
+            })
+
+          break;
+        default:
+          page404();
+          break;
+      }
+    }
+  </script>
+
+  <script>
+    function page404(){
+      document.querySelector('main').innerHTML = `
+        <h1 style="font-size: 50px;">404</h1>
+        <code style="font-size: 30px;">(╯°□°）╯︵ ┻━┻</code>
+
+        <p style="padding-top: 5vh;" class="contador"></p>
+      `;
+
+      redirect();
+    }
+  </script>
+
+  <script>
+    function initScroll(){
+      document.body.innerHTML += `
+      <SCR`+ `IPT>
+        var { 
+            OverlayScrollbars, 
+            ScrollbarsHidingPlugin, 
+            SizeObserverPlugin, 
+            ClickScrollPlugin  
+          } = OverlayScrollbarsGlobal;
+        const osInstance = OverlayScrollbars(document.getElementById('scroll-area'), {			
+            paddingAbsolute: false,
+            showNativeOverlaidScrollbars: false,
+            update: {
+              elementEvents: [['img', 'load']],
+              debounce: [0, 33],
+              attributes: null,
+              ignoreMutation: null,
+            },
+            overflow: {
+              x: 'scroll',
+              y: 'scroll',
+            },
+            scrollbars: {
+              theme: 'os-theme-dark',
+              visibility: 'auto',
+              autoHide: 'scroll',
+              autoHideDelay: 1300,
+              autoHideSuspend: false,
+              dragScroll: true,
+              clickScroll: false,
+              pointers: ['mouse', 'touch', 'pen'],
+            },});
+      </SCR` + `IPT>`
+    }
+  </script>
 </body>
 </html>
