@@ -516,13 +516,13 @@ footer{
     let parsedUrl = new URL(window.location.href);
 
     let rotas = {
-      "my-articles": "my-articles/",
+      "my-articles": "/my-articles/",
     }
 
 
     for (const [key, value] of Object.entries(rotas)) {
 
-          if (parsedUrl.pathname.startsWith(value)) {
+          if (parsedUrl.pathname == value) {
             view(key) // Executa a função associada à rota
           }
     }
