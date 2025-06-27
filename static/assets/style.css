@@ -261,6 +261,10 @@ footer{
     object-fit: contain;
 }
 
+
+.markdown-body{
+  width: 100%;
+}
 @media (prefers-color-scheme: dark) {
   :root {
       --cinza: rgba(255, 255, 255, 0.15);
