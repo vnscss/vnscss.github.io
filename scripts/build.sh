@@ -17,9 +17,6 @@ rm -rf ./static
 cp -a ./django-proj/static ./static
 
 
-rm -rf ./media
-cp -a ./django-proj/conteudo ./media
-
 
 rm -rf ./article
 mkdir -p ./article
