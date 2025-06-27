@@ -127,7 +127,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT = f'{BASE_DIR}/conteudo/'
+MEDIA_ROOT = f'{BASE_DIR}../media/'
 MEDIA_URL = '/media/'
 
 MARKDOWNIFY = {
