@@ -7,7 +7,6 @@ fi
 
 rm -rf ./index.html
 rm -rf ./static
-rm -rf ./article
 
 
 

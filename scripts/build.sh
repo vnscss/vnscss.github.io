@@ -18,8 +18,10 @@ cp -a ./django-proj/static ./static
 
 
 
-rm -rf ./article
-mkdir -p ./article
+if [ ! -d ./article ]; then
+  mkdir -p ./article
+fi
+
 for slug in $(curl -s "$endpoint/api/articles/"); do
     wget "$endpoint/article/$slug" -O "./article/$slug"
 done
