@@ -13,10 +13,6 @@ rm -rf ./index.html
 endpoint="http://localhost:9000"
 wget "$endpoint"
 
-rm -rf ./static
-cp -a ./django-proj/static ./static
-
-
 
 if [ ! -d ./article ]; then
   mkdir -p ./article

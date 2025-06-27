@@ -6,7 +6,6 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 rm -rf ./index.html
-rm -rf ./static
 
 
 
