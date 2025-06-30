@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    
+    <!--minisearch.js-->
+    <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.2/dist/umd/index.min.js"></script>
+
     <!--Google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -115,16 +117,60 @@
     function view(view) {
       switch (view) {
         case 'my-articles':
-          parsedUrl.searchParams.get('search') ? alert("vc pesquisou"): alert("not found")
 
+           queryResult = []
+          let x = 0
           fetch(`https://api.github.com/repos/vnscss/vnscss.github.io/contents/article`)
             .then(response => response.json())
             .then(data => {
-                for (const [key, value] of Object.entries(data)) {
-                  console.log(value.path)
-                }
+                data.forEach(element => {
+                  
+                  fetch(element.download_url)
+                    .then(response => response.text())
+                    .then(content => {
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(content, 'text/html');
+                      objt = {
+                        id : x,
+                        title: doc.body.querySelector(".articleTitle").innerHTML.trim(),
+                        chamada: doc.body.querySelector(".articleChamada").innerHTML.trim(),
+                        date: doc.body.querySelector(".articleData code").innerHTML.trim()
+                      }
+                      x ++;
+                      queryResult.push(objt);
+
+                    })
+                    .catch(error => console.error('Error fetching article:', error));
+                });
             })
 
+            
+            if(parsedUrl.searchParams.get('search')){
+                  
+                  let searchQuery = parsedUrl.searchParams.get('search')
+
+                  let miniSearch = new MiniSearch({
+                    fields: ['title', 'chamada' , 'date'], // fields to index for full-text search
+                    storeFields: ['title', 'category' , 'date'] // fields to return with search results
+                  })
+
+                  miniSearch.addAll(queryResult)
+
+                  let results = miniSearch.search(searchQuery)
+
+                  results.forEach(element => {
+                    let main = document.querySelector('main');
+                    main.innerHTML += element.title + `<br>`;
+                  });
+
+            }
+            else{
+                    let main = document.querySelector('main');
+                    
+                    queryResult.forEach(element => {
+                      main.innerHTML += element.title + `<br>`;
+                    });
+            }
           break;
         default:
           page404();
