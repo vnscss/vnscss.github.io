@@ -118,36 +118,42 @@
       switch (view) {
         case 'my-articles':
 
-           queryResult = []
+          queryResult = []
           let x = 0
+
+
+
           fetch(`https://api.github.com/repos/vnscss/vnscss.github.io/contents/article`)
             .then(response => response.json())
             .then(data => {
-                data.forEach(element => {
-                  
-                  fetch(element.download_url)
-                    .then(response => response.text())
-                    .then(content => {
-                      const parser = new DOMParser();
-                      const doc = parser.parseFromString(content, 'text/html');
-                      objt = {
-                        id : x,
-                        title: doc.body.querySelector(".articleTitle").innerHTML.trim(),
-                        chamada: doc.body.querySelector(".articleChamada").innerHTML.trim(),
-                        date: doc.body.querySelector(".articleData code").innerHTML.trim()
-                      }
-                      x ++;
-                      queryResult.push(objt);
+              const articleFetches = data.map(element => {
+                return fetch(element.download_url)
+                  .then(response => response.text())
+                  .then(content => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(content, 'text/html');
 
-                    })
-                    .catch(error => console.error('Error fetching article:', error));
-                });
-            })
-            .then(() => {
-              search();
-            })
+                    const objt = {
+                      id: x,
+                      title: doc.body.querySelector(".articleTitle")?.innerHTML.trim() || '',
+                      chamada: doc.body.querySelector(".articleChamada")?.innerHTML.trim() || '',
+                      date: doc.body.querySelector(".articleData code")?.innerHTML.trim() || ''
+                    }
 
-            function search(){
+                    x++;
+                    queryResult.push(objt);
+                  })
+                  .catch(error => {
+                    console.error('Error fetching article:', error);
+                  });
+              });
+
+              
+              Promise.all(articleFetches).then(search); 
+            });
+            
+        
+        function search(){
                   if(parsedUrl.searchParams.get('search')){
                         
                         let searchQuery = parsedUrl.searchParams.get('search')
