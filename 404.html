@@ -140,11 +140,11 @@
                       queryResult.push(objt);
 
                     })
-                    .then(() => {
-                      search();
-                    })
                     .catch(error => console.error('Error fetching article:', error));
                 });
+            })
+            .then(() => {
+              search();
             })
 
             function search(){
