@@ -140,37 +140,41 @@
                       queryResult.push(objt);
 
                     })
+                    .then(() => {
+                      search();
+                    })
                     .catch(error => console.error('Error fetching article:', error));
                 });
             })
 
-            
-            if(parsedUrl.searchParams.get('search')){
-                  
-                  let searchQuery = parsedUrl.searchParams.get('search')
+            function search(){
+                  if(parsedUrl.searchParams.get('search')){
+                        
+                        let searchQuery = parsedUrl.searchParams.get('search')
 
-                  let miniSearch = new MiniSearch({
-                    fields: ['title', 'chamada' , 'date'], // fields to index for full-text search
-                    storeFields: ['title', 'category' , 'date'] // fields to return with search results
-                  })
+                        let miniSearch = new MiniSearch({
+                          fields: ['title', 'chamada' , 'date'], // fields to index for full-text search
+                          storeFields: ['title', 'category' , 'date'] // fields to return with search results
+                        })
 
-                  miniSearch.addAll(queryResult)
+                        miniSearch.addAll(queryResult)
 
-                  let results = miniSearch.search(searchQuery)
+                        let results = miniSearch.search(searchQuery)
 
-                  results.forEach(element => {
-                    let main = document.querySelector('main');
-                    main.innerHTML += element.title + `<br>`;
-                  });
+                        results.forEach(element => {
+                          let main = document.querySelector('main');
+                          main.innerHTML += element.title + `<br>`;
+                        });
 
-            }
-            else{
-                    let main = document.querySelector('main');
-                    
-                    queryResult.forEach(element => {
-                      main.innerHTML += element.title + `<br>`;
-                    });
-            }
+                  }
+                  else{
+                          let main = document.querySelector('main');
+                          
+                          queryResult.forEach(element => {
+                            main.innerHTML += element.title + `<br>`;
+                          });
+                  }
+          } 
           break;
         default:
           page404();
