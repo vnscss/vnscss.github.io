@@ -185,7 +185,7 @@
 
                         results.forEach(element => {
                           let main = document.querySelector('main');
-                          main.innerHTML += `<a href="${element.path}">${element.title}</a>` + `<br>`;
+                          main.innerHTML += `<a href="/${element.path}">${element.title}</a>` + `<br>`;
                         });
 
                   }
@@ -193,7 +193,7 @@
                           let main = document.querySelector('main');
                           
                           queryResult.forEach(element => {
-                            main.innerHTML += `<a href="${element.path}">${element.title}</a>` + `<br>`;
+                            main.innerHTML += `<a href="/${element.path}">${element.title}</a>` + `<br>`;
                           });
                   }
           } 
