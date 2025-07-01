@@ -109,6 +109,9 @@ main{
     padding-top: 5vh;
 
     overflow: scroll;
+
+    justify-content: flex-end;
+    gap: 40dvh;
 }
 
 main {
