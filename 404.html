@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!--pagination.js-->
+    <script src="https://pagination.js.org/dist/2.6.0/pagination.min.js"></script>
 
     <!--minisearch.js-->
     <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.2/dist/umd/index.min.js"></script>
@@ -36,6 +41,7 @@
     
     
     <link rel="stylesheet" href="/static/assets/style.css">
+    <link rel="stylesheet" href="static/assets/pagination.js.fork.css">
 </head data-overlayscrollbars-initialize>
 <body>
     <header>
@@ -75,7 +81,7 @@
 </script> 
     
   <script>
-    function page404(){
+    function page40(){
       document.querySelector('main').innerHTML = `
         <h1 style="font-size: 50px;">404</h1>
         <code style="font-size: 30px;">(╯°□°）╯︵ ┻━┻</code>
@@ -87,10 +93,14 @@
     }
   </script>
 
-    <main style="justify-content: center;">
-
+    <main >
+    <div id="data-container">
+      <div style="width:24px;height:24px;border:3px solid #ccc;border-top:3px solid #333;border-radius:50%;animation:spin 1s linear infinite;"></div>
+      <style>@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}</style>
+    </div>
+    <div id="demo">
+    </div>
     </main>
-    
     <script>
       function redirect(){
         let contador = document.querySelector(".contador");
@@ -183,18 +193,11 @@
 
                         let results = miniSearch.search(searchQuery)
 
-                        results.forEach(element => {
-                          let main = document.querySelector('main');
-                          main.innerHTML += `<a href="/${element.path}">${element.title}</a>` + `<br>`;
-                        });
+                        pagination(results);
 
                   }
                   else{
-                          let main = document.querySelector('main');
-                          
-                          queryResult.forEach(element => {
-                            main.innerHTML += `<a href="/${element.path}">${element.title}</a>` + `<br>`;
-                          });
+                    pagination(queryResult);
                   }
           } 
           break;
@@ -240,6 +243,31 @@
               pointers: ['mouse', 'touch', 'pen'],
             },});
       </SCR` + `IPT>`
+    }
+  </script>
+
+  <script>
+    function pagination(results) {
+      console.log(results);
+      $('#demo').pagination({
+          dataSource: results,
+          pageSize: 1,
+          showGoInput: true,
+          showGoButton: true,
+          callback: function(data, pagination) {
+            let dataContainer = document.getElementById('data-container');
+              dataContainer.innerHTML = ''; // Clear previous content
+              data.forEach(element => {
+                stringHtml = `<div class="article">
+                  <h2 class="articleTitle">${element.title}</h2>
+                  <p class="articleChamada">${element.chamada}</p>
+                  <p class="articleData"><code>${element.date}</code></p>
+                  <a href="/${element.path}" style=" color: #007bff; text-decoration: none; font-weight: bold; cursor: pointer;">Ler mais</a>
+                </div>`;
+                dataContainer.innerHTML += stringHtml;
+              });
+          }
+      })
     }
   </script>
 </body>
