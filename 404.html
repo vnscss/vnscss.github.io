@@ -74,6 +74,18 @@
     });
 </script> 
     
+  <script>
+    function page404(){
+      document.querySelector('main').innerHTML = `
+        <h1 style="font-size: 50px;">404</h1>
+        <code style="font-size: 30px;">(╯°□°）╯︵ ┻━┻</code>
+
+        <p style="padding-top: 5vh;" class="contador"></p>
+      `;
+
+      redirect();
+    }
+  </script>
 
     <main style="justify-content: center;">
 
@@ -111,6 +123,9 @@
           if (parsedUrl.pathname == value) {
             view(key) // Executa a função associada à rota
           }
+          else{
+            page404(); // Se a rota não existir, exibe a página 404
+          }
     }
 
 
@@ -137,7 +152,8 @@
                       id: x,
                       title: doc.body.querySelector(".articleTitle")?.innerHTML.trim() || '',
                       chamada: doc.body.querySelector(".articleChamada")?.innerHTML.trim() || '',
-                      date: doc.body.querySelector(".articleData code")?.innerHTML.trim() || ''
+                      date: doc.body.querySelector(".articleData code")?.innerHTML.trim() || '',
+                      path	: element.path?.trim() || '',
                     }
 
                     x++;
@@ -160,7 +176,7 @@
 
                         let miniSearch = new MiniSearch({
                           fields: ['title', 'chamada' , 'date'], // fields to index for full-text search
-                          storeFields: ['title', 'category' , 'date'] // fields to return with search results
+                          storeFields: ['title', 'category' , 'date' , 'path'] // fields to return with search results
                         })
 
                         miniSearch.addAll(queryResult)
@@ -169,7 +185,7 @@
 
                         results.forEach(element => {
                           let main = document.querySelector('main');
-                          main.innerHTML += element.title + `<br>`;
+                          main.innerHTML += `<a href="${element.path}">${element.title}</a>` + `<br>`;
                         });
 
                   }
@@ -177,7 +193,7 @@
                           let main = document.querySelector('main');
                           
                           queryResult.forEach(element => {
-                            main.innerHTML += element.title + `<br>`;
+                            main.innerHTML += `<a href="${element.path}">${element.title}</a>` + `<br>`;
                           });
                   }
           } 
@@ -189,18 +205,6 @@
     }
   </script>
 
-  <script>
-    function page404(){
-      document.querySelector('main').innerHTML = `
-        <h1 style="font-size: 50px;">404</h1>
-        <code style="font-size: 30px;">(╯°□°）╯︵ ┻━┻</code>
-
-        <p style="padding-top: 5vh;" class="contador"></p>
-      `;
-
-      redirect();
-    }
-  </script>
 
   <script>
     function initScroll(){
