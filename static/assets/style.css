@@ -346,6 +346,10 @@ footer{
 }
 
 @media (max-width: 768px) {
+
+  .singleArticleContainer{
+    width: 90%;
+  }
         body {
         height: 100dvh;
     }
@@ -391,6 +395,9 @@ footer{
 }
 
 @media (max-width: 480px) {
+    .singleArticleContainer{
+    width: 90%;
+  }
         body {
         height: 100dvh;
     }
