@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--highlight.js-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S9J0T4538S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-S9J0T4538S');
+</script>
+
+    <!--Google fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+
+    <!--Google icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+    <!--bootstrap5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+    <!--overlayscrollbars-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.10.1/styles/overlayscrollbars.min.css" integrity="sha512-1upUL7mU0vRAdxf0hllx44X8k95N0hSFoljRxrCYLvqn7Ih2lGbzgrNTDpXUPnHo/m6lB7JZzteEy7IXHuJ/cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.10.1/browser/overlayscrollbars.browser.es6.min.js" integrity="sha512-bDTkSDb0/IRzL9tINJGwc2iQwmqVF3X9y7Doo7ZWvtfUM0y8Wuw1yqbYSPCBfVUBun64XIyPfXStDf9vc7cR8Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <link rel="icon" href="/static/assets/favicon.png" type="image/x-icon">
+
+
+    <title>
+        
+Como descobrir se um número é par ou ímpar com apenas 213 mil linhas de código
+
+    </title>
+    
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            let FILE = "https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@main/github-markdown-dark.css"
+            var css = document.createElement('link');
+            css.setAttribute('rel','stylesheet');
+            css.setAttribute('type', 'text/css');
+            css.setAttribute('href', FILE);
+
+            document.getElementsByTagName('head')[0].appendChild(css);
+        }
+        else{
+            let FILE = "https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css@main/github-markdown-light.css"
+            var css = document.createElement('link');
+            css.setAttribute('rel','stylesheet');
+            css.setAttribute('type', 'text/css');
+            css.setAttribute('href', FILE);
+
+            document.getElementsByTagName('head')[0].appendChild(css);
+        }
+    </script>
+
+
+    <title>Como descobrir se um número é par ou ímpar com apenas 213 mil linhas de código</title>
+    <meta name="description" content="Porque usar % 2 se você pode usar 213.000 if/else?">
+    <meta name="keywords" content="
+full-stack development, full stack developer, web development career, backend development, frontend development, software development, junior developer, software engineering, coding career, IT jobs, tech industry, programming roadmap, learn to code, self-taught developer, software engineering career, developer portfolio, coding bootcamp, web technologies, open source contributions, agile development, APIs, cloud computing, GitHub, DevOps, RESTful APIs, React, Node.js, Django, JavaScript, HTML, CSS, Python, SQL, version control, CI/CD, IT infrastructure, software architecture, database design, MVC, computer science fundamentals,
+
+desenvolvimento full-stack, carreira em TI, desenvolvedor web, desenvolvedor backend, desenvolvedor frontend, programador iniciante, engenharia de software, carreira em programação, aprender a programar, tecnologia da informação, mercado de TI, roadmap do programador, desenvolvedor júnior, portfólio de programador, curso de programação, bootcamp de código, tecnologias web, computação em nuvem, APIs REST, DevOps, controle de versão, Git, GitHub, Python, JavaScript, React, Node, Django, banco de dados, arquitetura de software, boas práticas de programação, entrevista de emprego TI, carreira de TI
+" />
+    <meta name="author" content="Vinícius Pires">
+
+
+    <meta property="og:title" content="Como descobrir se um número é par ou ímpar com apenas 213 mil linhas de código" />
+    <meta property="og:description" content="Porque usar % 2 se você pode usar 213.000 if/else?" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="/article/como-descobrir-se-um-numero-e-par-ou-impar-com-apenas-213-mil-linhas-de-codigo-1" />
+    <meta property="og:image" content="/media/banners/banner-impar-ou-par.png" />
+    <meta property="og:site_name" content="vns.dev.br" />
+
+    <meta property="article:author" content="Vinícius Pires" />
+    <meta property="article:published_time" content="26 de Junho de 2025 às 14:02" />
+
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+
+
+    <link rel="canonical" href="/article/como-descobrir-se-um-numero-e-par-ou-impar-com-apenas-213-mil-linhas-de-codigo-1.html" />
+    <link rel="stylesheet" href="/static/assets/style.css">
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Como descobrir se um número é par ou ímpar com apenas 213 mil linhas de código",
+    "image": "/media/banners/banner-impar-ou-par.png",
+    "author": {
+        "@type": "Person",
+        "name": "Vinícius Pires"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "vns.dev.br",
+        "logo": {
+        "@type": "ImageObject",
+        "url": "/static/assets/vns.jpg"
+        }
+    },
+    "datePublished": "26 de Junho de 2025 às 14:02",
+    "description": "Porque usar % 2 se você pode usar 213.000 if/else?"
+    }
+    </script>
+
+
+
+
+</head data-overlayscrollbars-initialize>
+<body>
+    <header>
+    <h1 class="headerTitle" onclick="window.location.href = `/`" style="cursor: pointer;">vns.dev.br</h1>
+
+    <div class="search">
+        <input type="text">
+        <button class="searchButton"><span class="material-symbols-outlined">search</span></button>
+    </div>
+
+    <div class="redes">
+        <a href="https://github.com/vnscss/" class="github"> <img src="/static/assets/github.png" alt=""></a>
+        <a href="https://www.linkedin.com/in/vin%C3%ADcius-pires-4840b52a1/" class="linkedin"> <img src="/static/assets/linkedin.png" alt=""> </a>
+    </div>
+</header>
+
+
+<script>
+    let searchButton = document.querySelector('.searchButton');
+    let searchInput = document.querySelector('.search input');
+
+    searchButton.addEventListener('click', function() {
+        let query = searchInput.value.trim();
+        if (query) {
+            window.location.href = `/my-articles/?search=${encodeURIComponent(query)}`;
+        }
+    });
+
+    window.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            let query = searchInput.value.trim();
+            if (query) {
+                window.location.href = `/my-articles/?search=${encodeURIComponent(query)}`;
+            }
+        }
+    });
+</script> 
+    
+<main id="scroll-area">
+    <div class="articleInnerMainContainer">
+            <div class="singleArticleContainer">
+                            <div class="singleArticleHead">
+
+                                <h1 class="articleTitle">
+                                    Como descobrir se um número é par ou ímpar com apenas 213 mil linhas de código
+                                </h1>
+                                <p class="articleChamada">
+                                    Porque usar % 2 se você pode usar 213.000 if/else?
+                                </p>
+
+                                <p class="articleData">
+                                    <small>Publicado em :<code>  26 de Junho de 2025 às 14:02</code></small>
+                                </p>
+
+                                <div class="articleAuthor"> 
+                                    <img src="https://github.com/vnscss.png" alt="">
+                                    <a href="https://github.com/vnscss">Vinícius Pires</a>
+                                </div>
+                            </div>
+
+
+                        <div class="lineBr"></div>
+
+                        <div class="imgContainer">
+                            
+                            
+                                <img src="/media/banners/banner-impar-ou-par.png" alt="">
+                            
+                            
+                        </div>
+
+                        
+                        <div class="markdown-body" style="background-color: #0000;">
+                            <h1>Inspiração</h1>
+<p>Após assistir ao vídeo "<a href="https://www.youtube.com/watch?v=nlFjL0B43-w">4 bilhões de declarações "If"</a>" do <a href="https://www.youtube.com/@ThePrimeTimeagen">@ThePrime</a>, que é um react de um artigo feito pelo <a href="https://github.com/andreasjhkarlsson">@andreasjhkarlsson</a>, fiquei inspirado e decidi criar algo parecido.</p>
+<h1>A ideia</h1>
+<p>A princípio, a ideia era fazer um script em Python com milhares de linhas e que fizesse alguma operação claramente trivial e desnecessária.</p>
+<p>Por isso escolhi verificar se um número é ímpar ou par da maneira menos eficiente possível, com um bloco <code>if/else</code> para cada um dos números.</p>
+<h3>Mão na massa</h3>
+<p>Para automatizar o processo de criação desse script <em>"meme"</em>, criei o <code>create.py</code>.</p>
+<p>Esse script é basicamente um <code>forloop</code> que escreve os blocos <code>if/else</code> no arquivo <code>impar-ou-par.py</code>.<br />
+Parando apenas quando atinge o breakpoint, ou tamanho esperado em bytes especificado pelo usuário.</p>
+<pre class="codehilite"><code class="language-bash">$
+Digite o modo de geração:
+1 - Breakpoint
+2 - Tamanho esperado (em bytes)
+
+: 1
+Digite o breakpoint: 99999
+Iterations: 99998    Bytes: 7027685   
+</code></pre>
+
+<p>Output</p>
+<pre class="codehilite"><code class="language-python">...
+213703    elif numero == 71233:
+213704        print(&quot;O número 71233 é ímpar.&quot;)
+213705    elif numero == 71234:
+213706        print(&quot;O número 71234 é par.&quot;)
+213707    elif numero == 71235:
+213708        print(&quot;O número 71235 é ímpar.&quot;)
+213709    elif numero == 71236:
+213710        print(&quot;O número 71236 é par.&quot;)
+213711    else:
+213712        print(f&quot;Não é possível determinar se {numero} é um número ímpar ou par. :( &quot;)
+</code></pre>
+
+<h1>O problema</h1>
+<p>O script <code>create.py</code> funciona perfeitamente, criando arquivos enormes com milhares de linhas de forma eficiente.<br />
+Porém...</p>
+<p>Ao tentar executar o bendito <code>impar-ou-par.py</code>, o Python acusa um erro.</p>
+<blockquote>
+<p>MemoryError: Parser stack overflowed - Python source too complex to parse</p>
+</blockquote>
+<p>Todos aqueles blocos incontáveis de <code>if/else</code> eram complexos demais para serem <em>parseados</em> pelo interpretador.</p>
+<p>Um problema parecido com o que <a href="https://github.com/andreasjhkarlsson">@andreasjhkarlsson</a> também enfrentou na sua jornada.</p>
+<h1>Solução</h1>
+<p>Por conta desse empecilho, precisei criar um script <code>run.py</code> que é capaz de rodar o conteúdo gigantesco do <code>impar-ou-par.py</code>.</p>
+<p>Inicialmente, faço a validação do arquivo <code>impar-ou-par.py</code>, verificando se ele está lendo o número do usuário, e ao final se ele tem um último bloco <code>else</code> para parar o código.</p>
+<pre class="codehilite"><code class="language-python">    headerString = read_line(1).strip()
+    footerString = read_line(-2).strip()
+
+    if 'numero = int(input(&quot;Digite um número: &quot;))' in headerString and \
+       'print(f&quot;Não é possível determinar se {numero} é um número ímpar ou par. :(  &quot;)''' in footerString:
+</code></pre>
+
+<p>Após essa validação, executo a primeira linha extraída do <code>impar-ou-par.py</code> na thread do <code>run.py</code></p>
+<pre class="codehilite"><code class="language-python"># output
+numero = int(input(&quot;Digite um número: &quot;))
+</code></pre>
+
+<pre class="codehilite"><code class="language-python"> try:
+     string = read_line(1).strip()
+     exec(string ,  globals())
+     return True
+ except Exception as e:
+     print(e)
+     return False
+</code></pre>
+
+<p>E com um simples <code>forloop</code>, procuro o bloco <code>if/else</code> no qual a variável <code>numero</code> cairia, e executo seu conteúdo.</p>
+<pre class="codehilite"><code class="language-python">fp = open(file)
+    for i, line in enumerate(fp):
+        if f'{numero}' in line:
+            string = read_line(i+1).strip()
+            exec(string)
+            exit(0)
+fp.close()
+</code></pre>
+
+<p>Dessa forma, consigo executar o conteúdo do <code>impar-ou-par.py</code>, mantendo o comportamento esperado e de forma eficiente.</p>
+<h1>Fim</h1>
+<p>Se quiser testar esse experimento <em>"meme"</em> e gerar seu próprio <code>impar-ou-par.py</code>, confira o repositório:<br />
+<a href="https://github.com/vnscss/impar-ou-par">https://github.com/vnscss/impar-ou-par</a><br />
+🥸</p>
+<p>Confira também o artigo original do <a href="https://github.com/andreasjhkarlsson">@andreasjhkarlsson</a>:
+<a href="https://andreasjhkarlsson.github.io/jekyll/update/2023/12/27/4-billion-if-statements.html">4-billion-if-statements</a></p>
+                        </div>
+                
+            </div>
+    </div>
+</main>
+
+
+<script>
+
+    let markdownbody = document.querySelectorAll('.markdown-body *');
+    markdownbody.forEach((element) => {
+        if (element.tagName === 'IMG') {
+            let height = element.naturalHeight;
+            element. style.width = '100%';
+            element.style.height = height   + 'px';
+            element.style.objectFit = 'contain';
+        }
+    });
+
+</script>
+
+
+	<script>
+		var { 
+				OverlayScrollbars, 
+				ScrollbarsHidingPlugin, 
+				SizeObserverPlugin, 
+				ClickScrollPlugin  
+			} = OverlayScrollbarsGlobal;
+		const osInstance = OverlayScrollbars(document.getElementById('scroll-area'), {			
+				paddingAbsolute: false,
+				showNativeOverlaidScrollbars: false,
+				update: {
+					elementEvents: [['img', 'load']],
+					debounce: [0, 33],
+					attributes: null,
+					ignoreMutation: null,
+				},
+				overflow: {
+					x: 'scroll',
+					y: 'scroll',
+				},
+				scrollbars: {
+					theme: 'os-theme-dark',
+					visibility: 'auto',
+					autoHide: 'scroll',
+					autoHideDelay: 1300,
+					autoHideSuspend: false,
+					dragScroll: true,
+					clickScroll: false,
+					pointers: ['mouse', 'touch', 'pen'],
+				},});
+	</script>
+</body>
+</html>
