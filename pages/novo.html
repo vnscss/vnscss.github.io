@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Editor</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="/scripts/functions.js"></script>
+</head>
+<body>
+    <div style="display: flex;align-items: center;justify-content: center;flex-direction: row; width: 100vw; height: 100vh;">
+        <div class="editor" style="width: 100%;">
+            <input class="markdownTitle form-control" type="text" placeholder="Título...">
+            <textarea class="markdownChamada form-control" placeholder="Resumo ou chamada..."></textarea>
+            <textarea class="markdownWriting form-control" placeholder="Escreva seu texto em Markdown..."></textarea>
+            <button onclick="baixar()">Baixar</button>
+        </div>
+
+        <div class="markdown-body" style="width: 100%; padding: 2rem;overflow-y: scroll;height: 99vh;"></div>
+    </div>
+
+  <script>
+    const titleInput = document.querySelector('.markdownTitle');
+    const chamadaInput = document.querySelector('.markdownChamada');
+    const writingArea = document.querySelector('.markdownWriting');
+    const renderDiv = document.querySelector('.markdown-body');
+
+    function renderMarkdown() {
+      const title = titleInput.value.trim();
+      const chamada = chamadaInput.value.trim();
+      const content = writingArea.value.trim();
+
+      let markdown = '';
+      if (title) markdown += `# ${title}\n\n`;
+      if (chamada) markdown += `> ${chamada}\n\n`;
+      markdown += content;
+
+      renderDiv.innerHTML = marked.parse(markdown);
+    }
+
+    [titleInput, chamadaInput, writingArea].forEach(el => {
+      el.addEventListener('input', renderMarkdown);
+    });
+
+    // Render inicial vazio
+    renderMarkdown();
+
+    importStatic();
+  </script>
+
+    <script>
+    const editor = document.querySelector('.markdownWriting');
+    const preview = document.querySelector('.markdown-body');
+
+    let isSyncingEditorScroll = false;
+    let isSyncingPreviewScroll = false;
+
+    editor.addEventListener('scroll', () => {
+        if (isSyncingEditorScroll) return;
+        isSyncingPreviewScroll = true;
+        const ratio = editor.scrollTop / (editor.scrollHeight - editor.clientHeight);
+        preview.scrollTop = ratio * (preview.scrollHeight - preview.clientHeight);
+        isSyncingPreviewScroll = false;
+    });
+
+    preview.addEventListener('scroll', () => {
+        if (isSyncingPreviewScroll) return;
+        isSyncingEditorScroll = true;
+        const ratio = preview.scrollTop / (preview.scrollHeight - preview.clientHeight);
+        editor.scrollTop = ratio * (editor.scrollHeight - editor.clientHeight);
+        isSyncingEditorScroll = false;
+    });
+    </script>
+</body>
+</html>
